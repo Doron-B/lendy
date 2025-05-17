@@ -50,7 +50,7 @@ def get_score_and_limit_with_retry(self, loan_id, token):
         print('Max retries reached. Loan application failed.')
 
 
-def register_client(self, url, name, username, password):
+def register_client(self, url, name, username, password, token ):
     #  Call the client registration API
     registration_url = f'{self.CLIENT_BASE_URL}/createClient'
     payload = {
@@ -58,6 +58,7 @@ def register_client(self, url, name, username, password):
     'name': name,
     'username': username,
     'password': password,
+    'accesstoken' : token,
     }
     response = requests.post(registration_url, json=payload)
     response.raise_for_status()
